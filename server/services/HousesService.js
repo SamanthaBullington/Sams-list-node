@@ -31,7 +31,7 @@ class HousesService {
   async bid(body) {
     let house = await this.getById(body.id)
     if (house.price > body.price) {
-      throw new BadRequest('Cars can only be bid up')
+      throw new BadRequest('Houses can only be bid up')
     }
     house = await dbContext.House.findByIdAndUpdate(body.id, body, { new: true, runValidators: true })
     return house
